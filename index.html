@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>脑大洞开游戏库</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div id="wrapper">
+
+	<div class="overlay"></div>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+	<ul class="nav sidebar-nav">
+		<li class="sidebar-brand"><a href="#">脑大洞开</a></li>
+		<li><a href="#" id="toHome">首页</a></li>
+		<li><a href="#" id="showChar">随机字母</a></li>
+<!-- 		<li><a href="#">Second page</a></li>
+		<li><a href="#">Third page</a></li>
+		<li><a href="#">Page four</a></li>
+		<li><a href="#">Page 5</a></li>
+		<li><a href="#">Last page</a></li> -->
+	</ul>
+</nav>
+
+
+<div id="page-content-wrapper">
+	<button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+		<span class="hamb-top"></span>
+		<span class="hamb-middle"></span>
+		<span class="hamb-bottom"></span>
+	</button>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2">
+				<h1 class="page-header">脑大洞开</h1>
+				<p class="lead"></p>
+				<h3>A heading in the mix.</h3>
+				<p>Morbi leo risus, porta ac consectetur ac.</p>
+				<blockquote>Maecenas sed diam eget risus varius</blockquote>
+				<p>Aenean</p>
+				<h3>Another heading for typography's sake.</h3>
+			</div>
+
+			<div class="char"><span class="t-cen">1</span></div>
+		</div>
+	</div>
+
+</div>
+
+</div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+	  var trigger = $('.hamburger'),
+	      overlay = $('.overlay'),
+	     isClosed = false;
+
+	    trigger.click(function () {
+	      hamburger_cross();      
+	    });
+
+	    function hamburger_cross() {
+
+	      if (isClosed == true) {          
+	        overlay.hide();
+	        trigger.removeClass('is-open');
+	        trigger.addClass('is-closed');
+	        isClosed = false;
+	      } else {   
+	        overlay.show();
+	        trigger.removeClass('is-closed');
+	        trigger.addClass('is-open');
+	        isClosed = true;
+	      }
+	  }
+	  
+	  $('[data-toggle="offcanvas"]').click(function () {
+	        $('#wrapper').toggleClass('toggled');
+	  });  
+	});
+
+	//随机生成字母
+	function getCharacter(){ 
+	 var num,arr= ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'W', 'X', 'Y', 'Z'];
+	 num = Math.floor(Math.random()*24); 
+	 return arr[num]; 
+	} 
+
+
+	$("#showChar").click(function(){
+		$(".char").show();
+		$(".overlay").hide();
+		$(".toggled").removeClass();
+	})
+
+	$("#toHome").click(function(){
+		$(".char").hide();
+		$(".overlay").hide();
+		$(".toggled").removeClass();
+	})
+
+	$(".char").click(function(){
+		$(this).find(".t-cen").html(getCharacter());
+	})
+</script>
+</body>
+</html>
